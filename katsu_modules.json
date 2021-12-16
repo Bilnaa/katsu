@@ -1,0 +1,24 @@
+{
+    "modules": [{
+        "name": "Vostfree | FR",
+        "type": "bien",
+        "image": "https://i.postimg.cc/brRJ6SW8/logo.png",
+        "info": "Regardez gratuitement des animes avec le module du site VostFree.",
+        "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/Katsu/Vostfree/vostfree.json"
+    },
+    {
+        "name":"French-Anime | FR",
+        "type": "bien",
+        "image": "https://i.postimg.cc/W1M8FtJk/frenchanime.png",
+        "info": "Regardez gratuitement des animes avec le module du site French-Anime.",
+        "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/Katsu/French-anime/module.json"
+    },
+    {
+        "name": "Wiflix | FR",
+        "type": "bien",
+        "image": "https://i.postimg.cc/HnG4D0fD/logo.png",
+        "info": "Regardez gratuitement des films et séries avec le module du site Wiflix.",
+        "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/Katsu/wiflix/wiflix.json"
+    }
+ ]
+}
