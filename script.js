@@ -1,19 +1,3 @@
-var xhr=new XMLHttpRequest();
-xhr.open('GET','https://raw.githubusercontent.com/Bilnaa/katsu/main/katsu_modules.json');
-xhr.onload=function(){
-            var content = xhr.responseText;
-            var parsedJson = JSON.parse(content);
-            for (module of parsedJson.modules) {
-                let name = module.name;
-                let info = module.info;
-                let image = module.image;
-                let link = module.link;
-                var moduleEle = `<div class="col"> <div class="card mb-3 mt-5" style="max-width: 540px;"> <div class="row g-0"> <div class="col-md-4 text-center"> <img src="${image}" class="rounded img-fluid mx-auto d-block" alt="${name}" style="padding-top: auto;"> </div> <div class="col-md-8"> <div class="card-body"> <h5 class="card-title">${name}</h5> <p class="card-text">${info}</p> <button value="${link}" onclick="javascript:ClipBoard(this);" class="btn btn-dark">Copier dans le presse-papier</button> </div> </div> </div> </div></div>`;
-                document.getElementById("moduleskatsu").innerHTML += moduleEle;
-            }
-}
-xhr.send();
-
 function tooltip(el, message)
 {
 	var scrollLeft = document.body.scrollLeft || document.documentElement.scrollLeft;
@@ -46,26 +30,6 @@ function tooltip(el, message)
 }
 
 
-function iosCopyToClipboard(el) {
-    var oldContentEditable = el.contentEditable,
-        oldReadOnly = el.readOnly,
-        range = document.createRange();
-
-    el.contentEditable = true;
-    el.readOnly = false;
-    range.selectNodeContents(el);
-
-    var s = window.getSelection();
-    s.removeAllRanges();
-    s.addRange(range);
-
-    el.setSelectionRange(0, 999999); // A big number, to cover anything that could be inside the element.
-
-    el.contentEditable = oldContentEditable;
-    el.readOnly = oldReadOnly;
-
-    document.execCommand('copy');
-}
 
 function select_all_and_copy(el) 
 {
@@ -112,26 +76,63 @@ function select_all_and_copy(el)
 
 
 function ClipBoard(objButton){
-    console.log("pressed")
-    var text = objButton.value;
-    var fetch = new XMLHttpRequest();
-    fetch.open('GET', text);
-    fetch.onload = function(){
-        var content =fetch.responseText;
-        var sampleTextarea = document.createElement('textarea');
-        sampleTextarea.value = content; //save main text in it
-        document.body.appendChild(sampleTextarea);
+    if(navigator.userAgent.match(/ipad|ipod|iphone|android/i)){
+        console.log("pressed")
+        var text = objButton.value;
+        var fetch = new XMLHttpRequest();
+        fetch.open('GET', text);
+        fetch.onload = function(){
+            var content =fetch.responseText;
+            var sampleTextarea = document.createElement('textarea');
+            sampleTextarea.value = content; //save main text in it
+            document.body.appendChild(sampleTextarea);
+        }
+        fetch.send();
+        var textarea = document.querySelector('textarea');
+        try{
+            textarea.select(); //select the text
+        }catch(e){}
+        select_all_and_copy(textarea);
+        alert('Texte copié dans le presse-papier');
+        location.reload(); //remove the textarea
+    }else{
+        console.log("pressed")
+        var text = objButton.value;
+        var fetch = new XMLHttpRequest();
+        fetch.open('GET', text);
+        fetch.onload = function(){
+            var content =fetch.responseText;
+            //async clipboard
+            navigator.clipboard.writeText(content).then(function() {
+                console.log('Async: Copying to clipboard was successful!');
+                alert('Texte copié dans le presse-papier');
+            }, function(err) {
+                console.error('Async: Could not copy text: ', err);
+            });
+        }
+        fetch.send();
+
     }
-    fetch.send();
-    var textarea = document.querySelector('textarea');
-    try{
-        textarea.select(); //select the text
-    }catch(e){}
-    select_all_and_copy(textarea);
-    iosCopyToClipboard(textarea);
-    alert('Texte copié dans le presse-papier');
-    location.reload(); //remove the textarea
+    
 }
+
+var xhr=new XMLHttpRequest();
+xhr.open('GET','https://raw.githubusercontent.com/Bilnaa/katsu/main/katsu_modules.json');
+xhr.onload=function(){
+            var content = xhr.responseText;
+            var parsedJson = JSON.parse(content);
+            for (module of parsedJson.modules) {
+                let name = module.name;
+                let info = module.info;
+                let image = module.image;
+                let link = module.link;
+                var moduleEle = `<div class="col"> <div class="card mb-3 mt-5" style="max-width: 540px;"> <div class="row g-0"> <div class="col-md-4 text-center"> <img src="${image}" class="rounded img-fluid mx-auto d-block" alt="${name}" style="padding-top: auto;"> </div> <div class="col-md-8"> <div class="card-body"> <h5 class="card-title">${name}</h5> <p class="card-text">${info}</p> <button value="${link}" onclick="javascript:ClipBoard(this);" class="btn btn-dark">Copier dans le presse-papier</button> </div> </div> </div> </div></div>`;
+                document.getElementById("moduleskatsu").innerHTML += moduleEle;
+            }
+}
+xhr.send();
+
+
 
 
 
