@@ -76,7 +76,7 @@ function select_all_and_copy(el)
 
 
 function ClipBoard(objButton){
-    if(navigator.userAgent.match(/ipad|ipod|iphone|android/i)){
+    if(navigator.userAgent.match(/ipad|ipod|iphone/i)){
         console.log("pressed")
         var text = objButton.value;
         var fetch = new XMLHttpRequest();
@@ -131,11 +131,3 @@ xhr.onload=function(){
             }
 }
 xhr.send();
-
-
-
-
-
-
-
-
