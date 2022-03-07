@@ -19,6 +19,13 @@
         "image": "https://i.postimg.cc/HnG4D0fD/logo.png",
         "info": "Regardez gratuitement des films et séries avec le module du site Wiflix.",
         "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/Katsu/wiflix/wiflix.json"
+    },
+    {
+        "name": "Zoro | ENG",
+        "type": "bien",
+        "image": "https://i.postimg.cc/QC5gQWG6/zoro-logo.png",
+        "info": "Watch subbed and dubbed animes with the module of Zoro.",
+        "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/Katsu/Zoro/zoro.json"
     }
  ]
 }
