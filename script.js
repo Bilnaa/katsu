@@ -70,43 +70,23 @@ function select_all_and_copy(el) {
 
 
 function ClipBoard(objButton) {
-    if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
-        console.log("pressed")
-        var text = objButton.value;
-        var fetch = new XMLHttpRequest();
-        fetch.open('GET', text);
-        fetch.onload = function () {
-            var content = fetch.responseText;
-            var sampleTextarea = document.createElement('textarea');
-            sampleTextarea.value = content; //save main text in it
-            document.body.appendChild(sampleTextarea);
-        }
-        fetch.send();
-        var textarea = document.querySelector('textarea');
-        try {
-            textarea.select(); //select the text
-        } catch (e) {}
-        select_all_and_copy(textarea);
-        alert('Texte copié dans le presse-papier');
-        location.reload(); //remove the textarea
-    } else {
-        console.log("pressed")
-        var text = objButton.value;
-        var fetch = new XMLHttpRequest();
-        fetch.open('GET', text);
-        fetch.onload = function () {
-            var content = fetch.responseText;
-            //async clipboard
-            navigator.clipboard.writeText(content).then(function () {
-                console.log('Async: Copying to clipboard was successful!');
-                alert('Texte copié dans le presse-papier');
+    // make a fetch request to objButton.value and copy to the clipboard the response with ClipBoard API
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', objButton.value,true);
+    xhr.onload = function () {
+        if (this.status == 200) {
+            var text = this.responseText;
+            var textarea = document.createElement('textarea');
+            textarea.value = text;
+            navigator.clipboard.writeText(text).then(function () {
+                tooltip(objButton, "Copied to clipboard.");
             }, function (err) {
-                console.error('Async: Could not copy text: ', err);
+                tooltip(objButton, "Error: " + err);
             });
+            textarea.remove();
         }
-        fetch.send();
-
-    }
+    };
+    xhr.send();
 
 }
 
