@@ -129,6 +129,8 @@ xhr.send();
 if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
 // runs the function at every 10 seconds
 setInterval(function () {
-    var textarea = document.querySelector('textarea');
-    textarea.remove();
-}, 10000);}
+    var textarea = document.querySelectorAll('textarea');
+    for (var i = 0; i < textarea.length; i++) {
+        textarea[i].remove();
+    }
+}, 5000);}
