@@ -28,67 +28,17 @@ function tooltip(el, message) {
     }, 2000);
 }
 
-
-
-function select_all_and_copy(el) {
-    // Copy textarea, pre, div, etc.
-    if (document.body.createTextRange) {
-        // IE 
-        var textRange = document.body.createTextRange();
-        textRange.moveToElementText(el);
-        textRange.select();
-        textRange.execCommand("Copy");
-        tooltip(el, "Copied!");
-    } else if (window.getSelection && document.createRange) {
-        // non-IE
-        var editable = el.contentEditable; // Record contentEditable status of element
-        var readOnly = el.readOnly; // Record readOnly status of element
-        el.contentEditable = true; // iOS will only select text on non-form elements if contentEditable = true;
-        el.readOnly = true; // iOS will not select in a read only form element // Version 1.2c - Changed from false to true; Prevents keyboard from appearing when copying from textarea
-        var range = document.createRange();
-        range.selectNodeContents(el);
-        var sel = window.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(range); // Does not work for Firefox if a textarea or input
-        if (el.nodeName == "TEXTAREA" || el.nodeName == "INPUT")
-            el.select(); // Firefox will only select a form element with select()
-        //if (el.setSelectionRange && navigator.userAgent.match(/ipad|ipod|iphone/i)) // Version 1.2c - iOS 12 might be defaulting to desktop mode so removed
-        if (el.setSelectionRange) // Version 1.2c - iOS 12 might be defaulting to desktop mode and no longer has iphone in user agent
-            el.setSelectionRange(0, 999999); // iOS only selects "form" elements with SelectionRange
-        el.contentEditable = editable; // Restore previous contentEditable status
-        el.readOnly = readOnly; // Restore previous readOnly status 
-        if (document.queryCommandSupported("copy")) {
-            var successful = document.execCommand('copy');
-            if (successful) tooltip(el, "Copied to clipboard.");
-            else tooltip(el, "Échec de la copie.");
-        } else {
-            if (!navigator.userAgent.match(/ipad|ipod|iphone|android|silk/i))
-                tooltip(el, "Press CTRL+C to copy");
-        }
-    }
+async function clipboard(objButton) {
+    // fetch async to objButton.value
+    var text = await fetch(objButton.value).then(response => response.text());
+    // copy to clipboard
+    await navigator.clipboard.writeText(text).then(function () {
+        tooltip(objButton, "Copied!");
+    }).catch(function (err) {
+        tooltip(objButton, "Error: " + err);
+    });
 }
 
-
-function ClipBoard(objButton) {
-    // make a fetch request to objButton.value and copy to the clipboard the response with ClipBoard API
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', objButton.value,true);
-    xhr.onload = function () {
-        if (this.status == 200) {
-            var text = this.responseText;
-            var textarea = document.createElement('textarea');
-            textarea.value = text;
-            navigator.clipboard.writeText(text).then(function () {
-                tooltip(objButton, "Copied to clipboard.");
-            }, function (err) {
-                tooltip(objButton, "Error: " + err);
-            });
-            textarea.remove();
-        }
-    };
-    xhr.send();
-
-}
 
 var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://raw.githubusercontent.com/Bilnaa/katsu/main/katsu_modules.json');
@@ -101,9 +51,9 @@ xhr.onload = function () {
         let image = module.image;
         let link = module.link;
         if (name.includes('FR')) {
-            var moduleEle = `<div class="col"> <div class="card mb-3 mt-5" style="max-width: 540px;"> <div class="row g-0"> <div class="col-md-4 text-center"> <img src="${image}" class="rounded img-fluid mx-auto d-block" alt="${name}" style="padding-top: auto;"> </div> <div class="col-md-8"> <div class="card-body"> <h5 class="card-title">${name}</h5> <p class="card-text">${info}</p> <button value="${link}" onclick="javascript:ClipBoard(this);" class="btn btn-dark">Copier dans le presse-papier</button> </div> </div> </div> </div></div>`;
+            var moduleEle = `<div class="col"> <div class="card mb-3 mt-5" style="max-width: 540px;"> <div class="row g-0"> <div class="col-md-4 text-center"> <img src="${image}" class="rounded img-fluid mx-auto d-block" alt="${name}" style="padding-top: auto;"> </div> <div class="col-md-8"> <div class="card-body"> <h5 class="card-title">${name}</h5> <p class="card-text">${info}</p> <button value="${link}" onclick="javascript:clipboard(this);" class="btn btn-dark">Copier dans le presse-papier</button> </div> </div> </div> </div></div>`;
         } else if (name.includes('ENG')) {
-            var moduleEle = `<div class="col"> <div class="card mb-3 mt-5" style="max-width: 540px;"> <div class="row g-0"> <div class="col-md-4 text-center"> <img src="${image}" class="rounded img-fluid mx-auto d-block" alt="${name}" style="padding-top: auto;"> </div> <div class="col-md-8"> <div class="card-body"> <h5 class="card-title">${name}</h5> <p class="card-text">${info}</p> <button value="${link}" onclick="javascript:ClipBoard(this);" class="btn btn-dark">Copy to the clipboard</button> </div> </div> </div> </div></div>`;
+            var moduleEle = `<div class="col"> <div class="card mb-3 mt-5" style="max-width: 540px;"> <div class="row g-0"> <div class="col-md-4 text-center"> <img src="${image}" class="rounded img-fluid mx-auto d-block" alt="${name}" style="padding-top: auto;"> </div> <div class="col-md-8"> <div class="card-body"> <h5 class="card-title">${name}</h5> <p class="card-text">${info}</p> <button value="${link}" onclick="javascript:clipboard(this);" class="btn btn-dark">Copy to the clipboard</button> </div> </div> </div> </div></div>`;
         }
         document.getElementById("moduleskatsu").innerHTML += moduleEle;
     }
