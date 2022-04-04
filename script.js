@@ -41,7 +41,11 @@ function select_all_and_copy(el,button) {
         tooltip(el, "Copied!");
     } else if (window.getSelection && document.createRange) {
         // non-IE
-        var editable = el.contentEditable; // Record contentEditable status of element
+        try{
+            var editable = el.contentEditable; // Record contentEditable status of element
+        } catch(e){
+            tooltip(button,'Clique encore une fois pour copier. Click again to copy. ');
+        }
         var readOnly = el.readOnly; // Record readOnly status of element
         el.contentEditable = true; // iOS will only select text on non-form elements if contentEditable = true;
         el.readOnly = true; // iOS will not select in a read only form element // Version 1.2c - Changed from false to true; Prevents keyboard from appearing when copying from textarea
