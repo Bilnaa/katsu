@@ -32,12 +32,28 @@ async function clipboard(objButton) {
     // fetch async to objButton.value
     var text = await fetch(objButton.value).then(response => response.text());
     // copy to clipboard
-    await navigator.clipboard.writeText(text).then(function () {
-        tooltip(objButton, "Copied!");
-    }).catch(function (err) {
-        tooltip(objButton, "Error: " + err);
-    });
+    copyToClipboard(text, objButton);
 }
+
+// clipboard API function
+function copyToClipboard(text,el) {
+    var textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    textArea.setSelectionRange(0, 99999);
+    var successful = document.execCommand('copy');
+    var msg = successful ? 'successful' : 'unsuccessful';
+    // delete textArea
+    if (msg == 'unsuccessful') {
+        tooltip(el, 'Oops, unable to copy' + err);
+        document.body.removeChild(textArea);
+    } else {
+        tooltip(el, 'Copied to clipboard');
+        document.body.removeChild(textArea);
+    }
+}
+
 
 
 var xhr = new XMLHttpRequest();
