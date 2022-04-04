@@ -87,11 +87,6 @@ function ClipBoard(objButton) {
             textarea.select(); //select the text
         } catch (e) {}
         select_all_and_copy(textarea,objButton);
-        try{
-            textarea.remove();
-        } catch(e){
-            console.log(e)
-        }
     } else {
         console.log("pressed")
         var text = objButton.value;
