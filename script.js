@@ -48,8 +48,11 @@ function copyToClipboard(text,el) {
     if (msg == 'unsuccessful') {
         tooltip(el, 'Oops, unable to copy' + err);
         document.body.removeChild(textArea);
-    } else {
+    } else if(msg == 'successful') {
         tooltip(el, 'Copied to clipboard');
+        document.body.removeChild(textArea);
+    } else{
+        tooltip(el, 'Je comprends rien' + err);
         document.body.removeChild(textArea);
     }
 }
@@ -67,11 +70,19 @@ xhr.onload = function () {
         let image = module.image;
         let link = module.link;
         if (name.includes('FR')) {
-            var moduleEle = `<div class="col"> <div class="card mb-3 mt-5" style="max-width: 540px;"> <div class="row g-0"> <div class="col-md-4 text-center"> <img src="${image}" class="rounded img-fluid mx-auto d-block" alt="${name}" style="padding-top: auto;"> </div> <div class="col-md-8"> <div class="card-body"> <h5 class="card-title">${name}</h5> <p class="card-text">${info}</p> <button value="${link}" onclick="javascript:clipboard(this);" class="btn btn-dark">Copier dans le presse-papier</button> </div> </div> </div> </div></div>`;
+            var moduleEle = `<div class="col"> <div class="card mb-3 mt-5" style="max-width: 540px;"> <div class="row g-0"> <div class="col-md-4 text-center"> <img src="${image}" class="rounded img-fluid mx-auto d-block" alt="${name}" style="padding-top: auto;"> </div> <div class="col-md-8"> <div class="card-body"> <h5 class="card-title">${name}</h5> <p class="card-text">${info}</p> <button value="${link}" class="btn btn-dark">Copier dans le presse-papier</button> </div> </div> </div> </div></div>`;
         } else if (name.includes('ENG')) {
-            var moduleEle = `<div class="col"> <div class="card mb-3 mt-5" style="max-width: 540px;"> <div class="row g-0"> <div class="col-md-4 text-center"> <img src="${image}" class="rounded img-fluid mx-auto d-block" alt="${name}" style="padding-top: auto;"> </div> <div class="col-md-8"> <div class="card-body"> <h5 class="card-title">${name}</h5> <p class="card-text">${info}</p> <button value="${link}" onclick="javascript:clipboard(this);" class="btn btn-dark">Copy to the clipboard</button> </div> </div> </div> </div></div>`;
+            var moduleEle = `<div class="col"> <div class="card mb-3 mt-5" style="max-width: 540px;"> <div class="row g-0"> <div class="col-md-4 text-center"> <img src="${image}" class="rounded img-fluid mx-auto d-block" alt="${name}" style="padding-top: auto;"> </div> <div class="col-md-8"> <div class="card-body"> <h5 class="card-title">${name}</h5> <p class="card-text">${info}</p> <button value="${link}" class="btn btn-dark">Copy to the clipboard</button> </div> </div> </div> </div></div>`;
         }
         document.getElementById("moduleskatsu").innerHTML += moduleEle;
     }
 }
 xhr.send();
+
+// get all the buttons and assign an event listener to each one onclick
+var buttons = document.querySelectorAll('button');
+for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function () {
+        clipboard(this);
+    });
+}
