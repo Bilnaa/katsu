@@ -82,6 +82,7 @@ function ClipBoard(objButton) {
             document.body.appendChild(sampleTextarea);
         }
         fetch.send();
+        var textarea = document.querySelector("textarea")
         select_all_and_copy(textarea,objButton);
     } else {
         console.log("pressed")
