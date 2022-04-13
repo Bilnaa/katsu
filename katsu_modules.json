@@ -1,31 +1,61 @@
 {
     "modules": [{
-        "name": "Vostfree | FR",
-        "type": "bien",
-        "image": "https://i.postimg.cc/brRJ6SW8/logo.png",
-        "info": "Regardez gratuitement des animes avec le module du site VostFree.",
-        "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/Katsu/Vostfree/vostfree.json"
-    },
-    {
-        "name":"French-Anime | FR",
-        "type": "bien",
-        "image": "https://i.postimg.cc/W1M8FtJk/frenchanime.png",
-        "info": "Regardez gratuitement des animes avec le module du site French-Anime.",
-        "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/Katsu/French-anime/module.json"
-    },
-    {
-        "name": "Wiflix | FR",
-        "type": "bien",
-        "image": "https://i.postimg.cc/HnG4D0fD/logo.png",
-        "info": "Regardez gratuitement des films et séries avec le module du site Wiflix.",
-        "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/Katsu/wiflix/wiflix.json"
-    },
-    {
-        "name": "Zoro | ENG",
-        "type": "bien",
-        "image": "https://i.postimg.cc/QC5gQWG6/zoro-logo.png",
-        "info": "Watch subbed and dubbed animes with the module of Zoro.",
-        "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/Katsu/Zoro/zoro.json"
-    }
- ]
+            "name": "Vostfree | FR",
+            "type": "bien",
+            "image": "https://i.postimg.cc/brRJ6SW8/logo.png",
+            "info": "Regardez gratuitement des animes avec le module du site VostFree.",
+            "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/Katsu/Vostfree/vostfree.json"
+        },
+        {
+            "name": "French-Anime | FR",
+            "type": "bien",
+            "image": "https://i.postimg.cc/W1M8FtJk/frenchanime.png",
+            "info": "Regardez gratuitement des animes avec le module du site French-Anime.",
+            "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/Katsu/French-anime/module.json"
+        },
+        {
+            "name": "Wiflix | FR",
+            "type": "bien",
+            "image": "https://i.postimg.cc/HnG4D0fD/logo.png",
+            "info": "Regardez gratuitement des films et séries avec le module du site Wiflix.",
+            "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/Katsu/wiflix/wiflix.json"
+        },
+        {
+            "name": "Zoro | ENG",
+            "type": "bien",
+            "image": "https://i.postimg.cc/QC5gQWG6/zoro-logo.png",
+            "info": "Watch subbed and dubbed animes with the module of Zoro.",
+            "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/Katsu/Zoro/zoro.json"
+        }
+    ],
+    "resolvers":[{
+            "name": "VUDEO | Ketsu",
+            "type": "bien",
+            "image": "https://i.postimg.cc/9FvMqrVV/VUDEO.png",
+            "info": "VUDEO resolver for Ketsu",
+            "link": "ketsuapp:///resolverData=https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/resolvers/ketsu/Vudeo.json"
+        },
+        {
+            "name": "VUDEO | Katsu",
+            "type": "bien",
+            "image": "https://i.postimg.cc/9FvMqrVV/VUDEO.png",
+            "info": "VUDEO resolver for Katsu",
+            "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/resolvers/katsu/vudeo_katsu.json"
+        },
+        {
+            "name": "Streamtape | Katsu",
+            "type": "bien",
+            "image": "https://i.postimg.cc/SxyPdGmG/stape-logo.png",
+            "info": "Streamta resolver for Katsu",
+            "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/resolvers/katsu/vudeo_katsu.json"
+        },
+        {
+            "name": "ASIANEMBED | Katsu",
+            "type": "bien",
+            "image": "https://asianembed.io/img/logo_vid.png?3",
+            "info": "Asianembed resolver for Katsu",
+            "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/resolvers/katsu/vudeo_katsu.json"
+        }
+
+    ]
 }

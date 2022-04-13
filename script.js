@@ -30,7 +30,7 @@ function tooltip(el, message) {
 
 
 
-function select_all_and_copy(el,button) {
+function select_all_and_copy(el, button) {
     // Copy textarea, pre, div, etc.
     if (document.body.createTextRange) {
         // IE 
@@ -41,10 +41,10 @@ function select_all_and_copy(el,button) {
         tooltip(el, "Copied!");
     } else if (window.getSelection && document.createRange) {
         // non-IE
-        try{
+        try {
             var editable = el.contentEditable; // Record contentEditable status of element
-        } catch(e){
-            tooltip(button,'Clique encore une fois pour copier. Click again to copy. ');
+        } catch (e) {
+            tooltip(button, 'Clique encore une fois pour copier. Click again to copy. ');
         }
         var readOnly = el.readOnly; // Record readOnly status of element
         el.contentEditable = true; // iOS will only select text on non-form elements if contentEditable = true;
@@ -87,7 +87,7 @@ function ClipBoard(objButton) {
         }
         fetch.send();
         var textarea = document.querySelector("textarea")
-        select_all_and_copy(textarea,objButton);
+        select_all_and_copy(textarea, objButton);
     } else {
         console.log("pressed")
         var text = objButton.value;
@@ -105,7 +105,6 @@ function ClipBoard(objButton) {
             });
         }
         fetch.send();
-
     }
 
 }
@@ -127,14 +126,27 @@ xhr.onload = function () {
         }
         document.getElementById("moduleskatsu").innerHTML += moduleEle;
     }
+    for (module of parsedJson.resolvers) {
+        let name = module.name;
+        let info = module.info;
+        let image = module.image;
+        let link = module.link;
+        if (name.includes('Katsu')) {
+            var resolverEle = `<div class="col"> <div class="card mb-3 mt-5" style="max-width: 540px;"> <div class="row g-0"> <div class="col-md-4 text-center"> <img src="${image}" class="rounded img-fluid mx-auto d-block" alt="${name}" style="padding-top: auto;"> </div> <div class="col-md-8"> <div class="card-body"> <h5 class="card-title">${name}</h5> <p class="card-text">${info}</p> <button value="${link}" onclick="javascript:ClipBoard(this);" class="btn btn-dark">Copy to the clipboard</button> </div> </div> </div> </div></div>`;
+        } else if (name.includes('Ketsu')) {
+            var resolverEle = `<div class="col"> <div class="card mb-3 mt-5" style="max-width: 540px;"> <div class="row g-0"> <div class="col-md-4 text-center"> <img src="${image}" class="rounded img-fluid mx-auto d-block" alt="${name}" style="padding-top: auto;"> </div> <div class="col-md-8"> <div class="card-body"> <h5 class="card-title">${name}</h5> <p class="card-text">${info}</p> <a href="${link}" class="btn btn-dark">Add</a> </div> </div> </div> </div></div>`;
+        }
+        document.getElementById("resolvers").innerHTML += resolverEle;
+    }
 }
 xhr.send();
 
 if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
-// runs the function at every 10 seconds
-setInterval(function () {
-    var textarea = document.querySelectorAll('textarea');
-    for (var i = 0; i < textarea.length; i++) {
-        textarea[i].remove();
-    }
-}, 5000);}
+    // runs the function every 5 seconds
+    setInterval(function () {
+        var textarea = document.querySelectorAll('textarea');
+        for (var i = 0; i < textarea.length; i++) {
+            textarea[i].remove();
+        }
+    }, 5000);
+}

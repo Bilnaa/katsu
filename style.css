@@ -21,7 +21,7 @@ a {
     text-align: center;
 }
 
-a.btn.btn-dark {
+button.btn.btn-dark {
     margin: 5px;
 }
 
@@ -38,16 +38,12 @@ samp {
     display: none;
 }
 
-.text h1{
+.container h1{
     color: red;
     text-align: center;
     margin-top: 1em;
 }
 
-.separator-videos h2,.separator-images h2{
-    color : white;
-    text-align: center;
-}
 
 img {
     animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
