@@ -2,7 +2,7 @@
     "moduleName": "VIDSTREAMING",
     "nameMatches": ["ANIMESTREAMING", "GOGO-STREAM", "GOGO-PLAY", "STREAMANI", "VIDSTREAMING", "GOLOAD", "GOLOAD1", "GOGOPLAY1", "GOGOPLAY2", "GOGOPLAY3", "GOGOPLAY4", "GOGOPLAY5", "GOGOPLAY"],
     "developer": "Uknown",
-    "moduleID": "100",
+    "moduleID": "1001",
     "moduleVersion": "10.2",
     "baseURL": "",
     "resolver": [{
