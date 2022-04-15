@@ -55,7 +55,20 @@
             "image": "https://asianembed.io/img/logo_vid.png?3",
             "info": "Asianembed resolver for Katsu",
             "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/resolvers/katsu/vudeo_katsu.json"
+        },
+        {
+            "name": "VIDSTREAMING | Katsu",
+            "type": "bien",
+            "image": "https://avatars3.githubusercontent.com/u/20647983?s=200&v=4",
+            "info": "vidstreaming resolver for Katsu (available until Orion updates it)",
+            "link": "https://cdn.discordapp.com/attachments/825343138712780851/964333982605000754/vidstream_katsu.json"
+        },
+        {
+            "name": "VIDSTREAMING | Ketsu",
+            "type": "bien",
+            "image": "https://avatars3.githubusercontent.com/u/20647983?s=200&v=4",
+            "info": "Vidstreaming resolver for Ketsu (available until Orion updates it)",
+            "link": "ketsuapp:///resolverData=https://cdn.discordapp.com/attachments/825343138712780851/964333892230348910/vidstream_ketsu.json"
         }
-
     ]
 }
