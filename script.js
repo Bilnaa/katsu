@@ -74,6 +74,7 @@ function select_all_and_copy(el, button) {
 
 
 function ClipBoard(objButton) {
+    // check if the clipboard api is supported
     if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
         console.log("pressed")
         var text = objButton.value;
@@ -100,8 +101,7 @@ function ClipBoard(objButton) {
                 console.log('Async: Copying to clipboard was successful!');
                 tooltip(objButton, "Copied to clipboard.");
             }, function (err) {
-                console.error('Async: Could not copy text: ', err);
-                tooltip(objButton, "Failed.");
+                
             });
         }
         fetch.send();
@@ -149,4 +149,14 @@ if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
             textarea[i].remove();
         }
     }, 5000);
+}
+
+if (document.querySelectorAll('.resolvers .col') == undefined){
+    // delete the resolvers div 
+    document.getElementById("resolvers").remove();
+}
+
+if (document.querySelectorAll('.modules .col') == undefined){
+    // delete the resolvers div 
+    document.getElementById("modules").remove();
 }
