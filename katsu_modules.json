@@ -26,7 +26,22 @@
             "image": "https://i.postimg.cc/QC5gQWG6/zoro-logo.png",
             "info": "Watch subbed and dubbed animes with the module of Zoro.",
             "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/Katsu/Zoro/zoro.json"
+        },
+        {
+            "name": "Gogoanime | ENG",
+            "type": "bien",
+            "image": "https://i1.wp.com/kodibeginner.com/wp-content/uploads/2020/10/gogoanime.jpg?resize=300%2C300&ssl=1",
+            "info": "Watch subbed and dubbed animes with the module of gogoanime.",
+            "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/Katsu/Gogo/Gogo_anime.json"
+        },
+        {
+            "name": "Drama Cool | ENG",
+            "type": "bien",
+            "image": "https://i.postimg.cc/Sss25qmT/drama-cool.png",
+            "info": "Watch drama from all asia with the module of Drama Cool.",
+            "link": "https://raw.githubusercontent.com/Hooman1130/Modules/main/Katsu/dramacool.vc/module.json"
         }
+
     ],
     "resolvers":[{
             "name": "VUDEO | Ketsu",
@@ -34,20 +49,6 @@
             "image": "https://i.postimg.cc/9FvMqrVV/VUDEO.png",
             "info": "VUDEO resolver for Ketsu",
             "link": "ketsuapp://?resolverData=https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/resolvers/ketsu/Vudeo.json"
-        },
-        {
-            "name": "VUDEO | Katsu",
-            "type": "bien",
-            "image": "https://i.postimg.cc/9FvMqrVV/VUDEO.png",
-            "info": "VUDEO resolver for Katsu",
-            "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/resolvers/katsu/vudeo_katsu.json"
-        },
-        {
-            "name": "Streamtape | Katsu",
-            "type": "bien",
-            "image": "https://i.postimg.cc/SxyPdGmG/stape-logo.png",
-            "info": "Streamta resolver for Katsu",
-            "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/resolvers/katsu/vudeo_katsu.json"
         },
         {
             "name": "ASIANEMBED | Katsu",
