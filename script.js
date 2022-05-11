@@ -75,7 +75,7 @@ function select_all_and_copy(el, button) {
 
 function ClipBoard(objButton) {
     // check if the clipboard api is supported
-    if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+    if (!navigator.clipboard) {
         console.log("pressed")
         var text = objButton.value;
         var fetch = new XMLHttpRequest();
@@ -83,7 +83,7 @@ function ClipBoard(objButton) {
         fetch.onload = function () {
             var content = fetch.responseText;
             var sampleTextarea = document.createElement('textarea');
-            sampleTextarea.value = content; //save main text in it
+            sampleTextarea.value = content; 
             document.body.appendChild(sampleTextarea);
         }
         fetch.send();
@@ -96,7 +96,6 @@ function ClipBoard(objButton) {
         fetch.open('GET', text);
         fetch.onload = function () {
             var content = fetch.responseText;
-            //async clipboard
             navigator.clipboard.writeText(content).then(function () {
                 console.log('Async: Copying to clipboard was successful!');
                 tooltip(objButton, "Copied to clipboard.");
@@ -157,6 +156,6 @@ if (document.querySelectorAll('.resolvers .col') == undefined){
 }
 
 if (document.querySelectorAll('.modules .col') == undefined){
-    // delete the resolvers div 
+    // delete the modules div 
     document.getElementById("modules").remove();
 }
