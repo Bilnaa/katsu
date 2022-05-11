@@ -140,7 +140,7 @@ xhr.onload = function () {
 }
 xhr.send();
 
-if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+if (!navigator.clipboard) {
     // runs the function every 5 seconds
     setInterval(function () {
         var textarea = document.querySelectorAll('textarea');
