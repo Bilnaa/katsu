@@ -74,9 +74,8 @@ function select_all_and_copy(el, button) {
 
 
 function ClipBoard(objButton) {
-    alert(navigator.clipboard);
     // check if the clipboard api is supported
-    if (navigator.clipboard == undefined) {
+    if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
         console.log("pressed")
         var text = objButton.value;
         var fetch = new XMLHttpRequest();
@@ -84,7 +83,7 @@ function ClipBoard(objButton) {
         fetch.onload = function () {
             var content = fetch.responseText;
             var sampleTextarea = document.createElement('textarea');
-            sampleTextarea.value = content; 
+            sampleTextarea.value = content; //save main text in it
             document.body.appendChild(sampleTextarea);
         }
         fetch.send();
@@ -97,6 +96,7 @@ function ClipBoard(objButton) {
         fetch.open('GET', text);
         fetch.onload = function () {
             var content = fetch.responseText;
+            //async clipboard
             navigator.clipboard.writeText(content).then(function () {
                 console.log('Async: Copying to clipboard was successful!');
                 tooltip(objButton, "Copied to clipboard.");
@@ -141,7 +141,7 @@ xhr.onload = function () {
 }
 xhr.send();
 
-if (navigator.clipboard == undefined) {
+if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
     // runs the function every 5 seconds
     setInterval(function () {
         var textarea = document.querySelectorAll('textarea');
@@ -157,7 +157,6 @@ if (document.querySelectorAll('.resolvers .col') == undefined){
 }
 
 if (document.querySelectorAll('.modules .col') == undefined){
-    // delete the modules div 
+    // delete the resolvers div 
     document.getElementById("modules").remove();
 }
-
