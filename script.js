@@ -75,7 +75,7 @@ function select_all_and_copy(el, button) {
 
 function ClipBoard(objButton) {
     // check if the clipboard api is supported
-    if (!navigator.clipboard) {
+    if (navigator.clipboard == undefined) {
         console.log("pressed")
         var text = objButton.value;
         var fetch = new XMLHttpRequest();
@@ -140,7 +140,7 @@ xhr.onload = function () {
 }
 xhr.send();
 
-if (!navigator.clipboard) {
+if (navigator.clipboard == undefined) {
     // runs the function every 5 seconds
     setInterval(function () {
         var textarea = document.querySelectorAll('textarea');
@@ -159,3 +159,4 @@ if (document.querySelectorAll('.modules .col') == undefined){
     // delete the modules div 
     document.getElementById("modules").remove();
 }
+
