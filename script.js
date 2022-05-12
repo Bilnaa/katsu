@@ -74,6 +74,7 @@ function select_all_and_copy(el, button) {
 
 
 function ClipBoard(objButton) {
+    alert(navigator.clipboard);
     // check if the clipboard api is supported
     if (navigator.clipboard == undefined) {
         console.log("pressed")
