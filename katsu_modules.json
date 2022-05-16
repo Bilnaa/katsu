@@ -40,8 +40,14 @@
             "image": "https://i.postimg.cc/Sss25qmT/drama-cool.png",
             "info": "Watch drama from all asia with the module of Drama Cool.",
             "link": "https://raw.githubusercontent.com/Hooman1130/Modules/main/Katsu/dramacool.vc/module.json"
+        },
+        {
+            "name": "Otakufr | FR",
+            "type": "bien",
+            "image": "https://i.postimg.cc/2j9g6m8d/otakufr.png",
+            "info": "Regardez gratuitement des animes avec le module du site OtakuFR.",
+            "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/Katsu/OtakuFr/otakufr.json"
         }
-
     ],
     "resolvers":[{
             "name": "VUDEO | Ketsu",
