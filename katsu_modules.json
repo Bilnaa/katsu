@@ -57,11 +57,18 @@
             "link": "ketsuapp://?resolverData=https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/resolvers/ketsu/Vudeo.json"
         },
         {
+            "name": "VUDEO | Katsu",
+            "type": "bien",
+            "image": "https://i.postimg.cc/9FvMqrVV/VUDEO.png",
+            "info": "VUDEO resolver for Katsu",
+            "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/resolvers/katsu/vudeo_katsu.json"
+        },
+        {
             "name": "ASIANEMBED | Katsu",
             "type": "bien",
             "image": "https://asianembed.io/img/logo_vid.png?3",
             "info": "Asianembed resolver for Katsu",
-            "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/resolvers/katsu/vudeo_katsu.json"
+            "link": "https://raw.githubusercontent.com/Bilnaa/bilnaa.github.io/main/resolvers/katsu/asianembed.json"
         }
     ]
 }
